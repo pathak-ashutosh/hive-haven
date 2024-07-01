@@ -1,33 +1,79 @@
+/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;       /* White (#FFFFFF) */
+    --foreground: 0 0% 0%;         /* Black (#000000) */
+    
+    --card: 0 0% 90%;              /* Light Gray (#E5E5E5) */
+    --card-foreground: 0 0% 0%;    /* Black (#000000) */
+    
+    --popover: 0 0% 100%;          /* White (#FFFFFF) */
+    --popover-foreground: 0 0% 0%; /* Black (#000000) */
+    
+    --primary: 219 54% 16%;        /* Oxford Blue (#14213D) */
+    --primary-foreground: 0 0% 100%; /* White (#FFFFFF) */
+    
+    --secondary: 37 97% 53%;       /* Orange Peel (#FCA311) */
+    --secondary-foreground: 0 0% 0%; /* Black (#000000) */
+    
+    --muted: 0 0% 90%;             /* Light Gray (#E5E5E5) */
+    --muted-foreground: 219 54% 16%; /* Oxford Blue (#14213D) */
+    
+    --accent: 37 97% 53%;          /* Orange Peel (#FCA311) */
+    --accent-foreground: 0 0% 0%;  /* Black (#000000) */
+    
+    --destructive: 0 84% 60%;      /* Red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White (#FFFFFF) */
+    
+    --border: 0 0% 90%;            /* Light Gray (#E5E5E5) */
+    --input: 0 0% 90%;             /* Light Gray (#E5E5E5) */
+    --ring: 37 97% 53%;            /* Orange Peel (#FCA311) */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;         /* Black (#000000) */
+    --foreground: 0 0% 100%;       /* White (#FFFFFF) */
+    
+    --card: 219 54% 16%;           /* Oxford Blue (#14213D) */
+    --card-foreground: 0 0% 100%;  /* White (#FFFFFF) */
+    
+    --popover: 0 0% 0%;            /* Black (#000000) */
+    --popover-foreground: 0 0% 100%; /* White (#FFFFFF) */
+    
+    --primary: 37 97% 53%;         /* Orange Peel (#FCA311) */
+    --primary-foreground: 0 0% 0%; /* Black (#000000) */
+    
+    --secondary: 219 54% 16%;      /* Oxford Blue (#14213D) */
+    --secondary-foreground: 0 0% 100%; /* White (#FFFFFF) */
+    
+    --muted: 219 54% 16%;          /* Oxford Blue (#14213D) */
+    --muted-foreground: 0 0% 90%;  /* Light Gray (#E5E5E5) */
+    
+    --accent: 37 97% 53%;          /* Orange Peel (#FCA311) */
+    --accent-foreground: 0 0% 0%;  /* Black (#000000) */
+    
+    --destructive: 0 84% 60%;      /* Red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White (#FFFFFF) */
+    
+    --border: 219 54% 16%;         /* Oxford Blue (#14213D) */
+    --input: 219 54% 16%;          /* Oxford Blue (#14213D) */
+    --ring: 37 97% 53%;            /* Orange Peel (#FCA311) */
+
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
