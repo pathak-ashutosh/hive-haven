@@ -11,7 +11,7 @@ export default function AboutPage() {
               HiveHaven was founded with a simple mission: to make finding student accommodation easy, safe, and affordable for international students in the US.
             </p>
             <p className="mb-6 text-lg">
-              Our team of ex-international students understands the challenges of finding a home away from home. That's why we've created a platform that connects students with verified, quality housing options near their universities.
+              Our team of ex-international students understands the challenges of finding a home away from home. That&apos;s why we&apos;ve created a platform that connects students with verified, quality housing options near their universities.
             </p>
             <p className="mb-8 text-lg">
               We believe that a comfortable living space is crucial for academic success and personal growth. With HiveHaven, students can focus on their studies and experiences, knowing they have a secure and welcoming place to call home.

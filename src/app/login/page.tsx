@@ -30,7 +30,11 @@ export default function LoginPage() {
       if (error) throw error
       router.push('/dashboard')
     } catch (error) {
-      setError(error.message)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else {
+        setError('An unknown error occurred')
+      }
     } finally {
       setLoading(false)
       captchaRef.current?.resetCaptcha()
@@ -64,7 +68,7 @@ export default function LoginPage() {
             />
           </div>
           <HCaptcha
-            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ''}
             onVerify={setCaptchaToken}
             ref={captchaRef}
           />

@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase-server'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function PropertiesPage({
@@ -31,7 +32,7 @@ export default async function PropertiesPage({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {properties?.map((property) => (
               <div key={property.id} className="bg-card text-card-foreground rounded-lg overflow-hidden shadow-md">
-                <img src={`https://source.unsplash.com/800x600/?apartment&${property.id}`} alt={property.name} className="w-full h-48 object-cover" />
+                <Image src={`https://source.unsplash.com/800x600/?apartment&${property.id}`} width={192} height={192} alt={property.name} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">{property.name}</h2>
                   <p className="text-muted-foreground mb-2">{property.city}, {property.state}</p>
