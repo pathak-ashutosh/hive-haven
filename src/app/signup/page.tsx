@@ -135,14 +135,16 @@ export default function SignupPage() {
               <option value="landlord">Landlord</option>
             </select>
           </div>
-          <HCaptcha
-            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ''}
-            onVerify={setCaptchaToken}
-            ref={captchaRef}
-          />
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? 'Signing up...' : 'Sign Up'}
           </Button>
+          <div className='flex justify-center'>
+            <HCaptcha
+              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ''}
+              onVerify={setCaptchaToken}
+              ref={captchaRef}
+            />
+          </div>
         </form>
       </div>
     </div>
