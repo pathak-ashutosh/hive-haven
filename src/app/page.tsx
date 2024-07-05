@@ -26,6 +26,8 @@ export default async function Home() {
     return <div>Error loading featured properties</div>
   }
 
+  console.log('Featured properties:', properties)
+
   const { data: testimonials, error: testimonialsError } = await supabase
     .from('reviews')
     .select(`
@@ -47,7 +49,7 @@ export default async function Home() {
     return <div>Error loading testimonials</div>
   }
 
-  // console.log('Testimonials:', testimonials)
+  console.log('Testimonials:', testimonials)
 
   return (
     <main className="bg-background">
