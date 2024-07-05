@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase-server'
+import { hiveClient } from '@/lib/supabase-client'
 import Hero from '@/components/home/Hero'
 import FeaturedProperties from '@/components/home/FeaturedProperties'
 import HowItWorks from '@/components/home/HowItWorks'
@@ -7,7 +7,7 @@ import WhyChooseUs from '@/components/home/WhyChooseUs'
 import CallToAction from '@/components/home/CallToAction'
 
 export default async function Home() {
-  const supabase = createClient()
+  const supabase = hiveClient
   
   const { data: properties, error: propertiesError } = await supabase
     .from('properties')

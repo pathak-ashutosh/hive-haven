@@ -3,19 +3,56 @@
 import Link from 'next/link'
 import { CldImage } from 'next-cloudinary'
 import { Database } from '@/types/supabase'
+import { hiveClient } from '@/lib/supabase-client'
+import { useEffect, useState } from 'react'
 
 type PropertyImagesRow = Database['hive']['Tables']['property_images']['Row']
 type PropertyRow = Database['hive']['Tables']['properties']['Row']
 
 type Property = PropertyRow & {
-  property_images: Pick<PropertyImagesRow, 'id' | 'cloudinary_public_id' | 'cloudinary_url' | 'is_primary'>[]
+  property_images: Pick<PropertyImagesRow, 'id' | 'cloudinary_public_id' | 'is_primary'>[]
 }
 
-interface PropertiesListProps {
-  properties: Property[]
-}
+export default function PropertiesList() {
+  const [properties, setProperties] = useState<Property[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-export default function PropertiesList({ properties }: PropertiesListProps) {
+  useEffect(() => {
+    const fetchProperties = async () => {
+      setLoading(true)
+      const supabase = hiveClient
+      
+      try {
+        const { data, error } = await supabase
+          .from('properties')
+          .select(`
+            *,
+            property_images (
+              id,
+              cloudinary_public_id,
+              cloudinary_url,
+              is_primary
+            )
+          `)
+          .order('created_at', { ascending: false })
+
+        if (error) throw error
+        setProperties(data as Property[])
+      } catch (err) {
+        setError('Error fetching properties')
+        console.error('Error fetching properties:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProperties()
+  }, [])
+
+  if (loading) return <div>Loading properties...</div>
+  if (error) return <div>{error}</div>
+
   return (
     <div className="bg-background text-foreground">
       <section className="py-20">
