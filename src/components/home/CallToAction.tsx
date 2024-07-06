@@ -14,7 +14,7 @@ const CallToAction = () => {
       <div className="container mx-auto">
         <h2 className="text-3xl font-semibold mb-4 text-primary-foreground">Ready to Find Your New Home?</h2>
         <p className="text-xl mb-8 text-primary-foreground/80">Join thousands of students who&apos;ve found their perfect accommodation with HiveHaven.</p>
-        <Button size="lg" variant="secondary" useNextLink href="/signup">Get Started</Button>
+        <Button size="lg" variant="destructive" useNextLink href="/signup">Get Started</Button>
       </div>
     </motion.section>
   )

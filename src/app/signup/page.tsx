@@ -68,72 +68,74 @@ export default function SignupPage() {
 
   return (
     <div className="my-24 min-h-screen bg-background flex items-center justify-center">
-      <div className="bg-card p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-card p-8 rounded-lg shadow-md w-full max-w-md md:max-w-2xl">
         <h1 className="text-2xl font-bold mb-6 text-center">Sign up for HiveHaven</h1>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSignup} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block mb-1">Email</label>
-            <Input 
-              id="email" 
-              type="email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block mb-1">Password</label>
-            <Input 
-              id="password" 
-              type="password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
-          </div>
-          <div>
-            <label htmlFor="firstName" className="block mb-1">First Name</label>
-            <Input 
-              id="firstName" 
-              type="text" 
-              value={firstName} 
-              onChange={(e) => setFirstName(e.target.value)} 
-              required 
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName" className="block mb-1">Last Name</label>
-            <Input 
-              id="lastName" 
-              type="text" 
-              value={lastName} 
-              onChange={(e) => setLastName(e.target.value)} 
-              required 
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="block mb-1">Phone</label>
-            <Input 
-              id="phone" 
-              type="tel" 
-              value={phone} 
-              onChange={(e) => setPhone(e.target.value)} 
-              required 
-            />
-          </div>
-          <div>
-            <label htmlFor="userType" className="block mb-1">User Type</label>
-            <select
-              id="userType"
-              value={userType}
-              onChange={(e) => setUserType(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              required
-            >
-              <option value="student">Student</option>
-              <option value="landlord">Landlord</option>
-            </select>
+          <div className='grid grid-cols-2 gap-8'>
+            <div>
+              <label htmlFor="email" className="block mb-1">Email</label>
+              <Input 
+                id="email" 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block mb-1">Password</label>
+              <Input 
+                id="password" 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="firstName" className="block mb-1">First Name</label>
+              <Input 
+                id="firstName" 
+                type="text" 
+                value={firstName} 
+                onChange={(e) => setFirstName(e.target.value)} 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="lastName" className="block mb-1">Last Name</label>
+              <Input 
+                id="lastName" 
+                type="text" 
+                value={lastName} 
+                onChange={(e) => setLastName(e.target.value)} 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block mb-1">Phone</label>
+              <Input 
+                id="phone" 
+                type="tel" 
+                value={phone} 
+                onChange={(e) => setPhone(e.target.value)} 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="userType" className="block mb-1">User Type</label>
+              <select
+                id="userType"
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded"
+                required
+              >
+                <option value="student">Student</option>
+                <option value="landlord">Landlord</option>
+              </select>
+            </div>
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? 'Signing up...' : 'Sign Up'}
