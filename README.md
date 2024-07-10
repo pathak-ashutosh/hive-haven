@@ -1,38 +1,95 @@
 # HiveHaven: Student Accommodations made easy
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+> Currently under development
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+HiveHaven is a web application that aims to make the process of finding student accommodations easier. The application will allow students to search for accommodations based on their preferences and budget. The application will also allow landlords to list their properties and manage their listings.
+
+## Features
+
+- User registration and login
+- Search for accommodations based on preferences and budget
+- View details of accommodations
+- Contact landlords
+- List properties
+- Manage listings
+- View messages from students
+- View and manage bookings
+- View and manage reviews
+
+## Technologies
+
+- React
+- Next.js
+- Node.js
+- Supabase
+- Tailwind CSS
+- PostgreSQL
+- Vercel
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory and add the following environment variables
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+NEXT_PUBLIC_HCAPTCHA_SITE_KEY=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+```
+
+4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+6. You can start making changes to the code and the browser will automatically reload with the changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Deployment
 
-## Learn More
+The application is deployed on Vercel. You can deploy the application on Vercel by following the steps below:
 
-To learn more about Next.js, take a look at the following resources:
+1. Create a Vercel account
+2. Connect your GitHub account to Vercel
+3. Import the repository
+4. Configure the environment variables
+5. Deploy the application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions are welcome. You can contribute to the project by following the steps below:
 
-## Deploy on Vercel
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push your changes to your fork
+6. Create a pull request
+7. Wait for the pull request to be reviewed
+8. Once the pull request is approved, it will be merged
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Team
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Ashutosh Pathak](https://linkedin.com/in/pathak-ash)
+
+## License
+
+This project is licensed under the GNU GP 3.0 License - see the [LICENSE](LICENSE) file for details.

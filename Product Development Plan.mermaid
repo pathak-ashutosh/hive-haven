@@ -1,0 +1,67 @@
+graph TD
+    subgraph "MoSCoW Prioritization"
+        M[Must Have]
+        S[Should Have]
+        C[Could Have]
+        W[Won't Have]
+        
+        M -->|1| M1[User Authentication]
+        M -->|2| M2[Property Listings]
+        M -->|3| M3[Booking System]
+        M -->|4| M4[User Profiles]
+        
+        S -->|1| S1[Search and Filters]
+        S -->|2| S2[Reviews and Ratings]
+        S -->|3| S3[Messaging System]
+        
+        C -->|1| C1[Favorites]
+        C -->|2| C2[Map Integration]
+        C -->|3| C3[Virtual Tours]
+        
+        W -->|1| W1[Payment Processing]
+        W -->|2| W2[Mobile App]
+        W -->|3| W3[AI Chatbot]
+    end
+
+    subgraph "Kano Model"
+        B[Basic Features]
+        P[Performance Features]
+        E[Excitement Features]
+        
+        B --> B1[User Registration]
+        B --> B2[Property Search]
+        B --> B3[Booking Functionality]
+        
+        P --> P1[Advanced Filters]
+        P --> P2[Real-time Availability]
+        P --> P3[Landlord Verification]
+        
+        E --> E1[Virtual Reality Tours]
+        E --> E2[AI-powered Recommendations]
+        E --> E3[Roommate Matching]
+    end
+
+    subgraph "Product Roadmap"
+        MVP[Minimum Viable Product]
+        V1[Version 1.0]
+        V2[Version 2.0]
+        V3[Version 3.0]
+        
+        MVP --> MVP1[User Auth]
+        MVP --> MVP2[Basic Property Listings]
+        MVP --> MVP3[Simple Booking]
+        
+        V1 --> V11[Enhanced Search]
+        V1 --> V12[User Profiles]
+        V1 --> V13[Reviews System]
+        
+        V2 --> V21[Messaging System]
+        V2 --> V22[Favorites]
+        V2 --> V23[Map Integration]
+        
+        V3 --> V31[Virtual Tours]
+        V3 --> V32[AI Recommendations]
+        V3 --> V33[Mobile App]
+    end
+
+    MVP -.-> V1 -.-> V2 -.-> V3
