@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Exception: do not ignore .env.example
 !.env.example
+
+# data
+/data

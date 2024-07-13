@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { CldImage } from 'next-cloudinary'
 import { Database } from '@/types/supabase'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 type PropertyImagesRow = Database['hive']['Tables']['property_images']['Row']
 type UserRow = Database['hive']['Tables']['users']['Row']
@@ -16,7 +18,16 @@ interface PropertyDetailsProps {
   property: Property
 }
 
+interface RentalData {
+  date: string;
+  price: number;
+}
+
 export default function PropertyDetails({ property }: PropertyDetailsProps) {
+  const [rentalData, setRentalData] = useState<RentalData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const primaryImage = property.property_images?.find(img => img.is_primary);
   const otherImages = property.property_images?.filter(img => !img.is_primary);
 
@@ -25,6 +36,28 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
     email: property.users?.email,
     phone: property.users?.phone
   };
+
+  useEffect(() => {
+    async function fetchRentalData() {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`/api/rental-data?city=${encodeURIComponent(property.city)}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch rental data');
+        }
+        const data = await response.json();
+        setRentalData(data);
+      } catch (error) {
+        console.error('Error fetching rental data:', error);
+        setError('Failed to load rental data. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchRentalData();
+  }, [property.city]);
 
   return (
     <div className="bg-background text-foreground">
@@ -78,6 +111,52 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
               <p className="mb-2"><strong>Name:</strong> {landlordInfo.name}</p>
               <p className="mb-2"><strong>Email:</strong> {landlordInfo.email}</p>
               <p className="mb-4"><strong>Phone:</strong> {landlordInfo.phone}</p>
+              <div className='flex flex-col justify-center items-center my-10'>
+                <h2 className="text-2xl font-semibold mb-4">Rental <span className='text-primary'>Trends</span> in {property.city}</h2>
+                {isLoading ? (
+                  <p>Loading rental data...</p>
+                ) : error ? (
+                  <p className="text-red-500">{error}</p>
+                ) : (
+                  <div className="w-full h-80">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={rentalData}
+                        margin={{
+                          top: 5,
+                          right: 30,
+                          left: 20,
+                          bottom: 5,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis 
+                          dataKey="date" 
+                          tickFormatter={(tick) => new Date(tick).toLocaleDateString('en-US', { year: '2-digit', month: 'short' })}
+                        />
+                        <YAxis />
+                        <Tooltip 
+                          labelFormatter={(label) => new Date(label).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                          formatter={(value: number | string) => {
+                            const numValue = typeof value === 'string' ? parseFloat(value) : value;
+                            return [`$${numValue.toFixed(2)}`, "Rent"];
+                          }}
+                        />
+                        <Legend />
+                        <Line 
+                          type="monotone" 
+                          dataKey="price" 
+                          stroke="hsl(var(--primary))"
+                          activeDot={{ r: 8 }} 
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                )}
+                <p className="mt-4 text-sm text-gray-600">
+                  This chart shows the average rental prices in {property.city} from 2020 to present.
+                </p>
+              </div>
             </div>
           </div>
         </div>
