@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { CheckCircle } from 'lucide-react'
+import { motion } from 'framer-motion';
+import { CheckCircle } from 'lucide-react';
 
 const features = [
   { title: 'Verified Listings', description: 'All our accommodations are verified for quality and safety.' },
@@ -13,7 +13,7 @@ const features = [
 const WhyChooseUs = () => {
   return (
     <section className="py-16 bg-background">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <h2 className="text-3xl font-semibold mb-8 text-center text-foreground">Why Choose <span className='text-primary'>hive</span>Haven?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
@@ -30,11 +30,11 @@ const WhyChooseUs = () => {
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             </motion.div>
-          ))}
+          ))};
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default WhyChooseUs
+export default WhyChooseUs;

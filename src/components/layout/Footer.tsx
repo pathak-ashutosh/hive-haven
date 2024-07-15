@@ -1,13 +1,12 @@
-// src/components/layout/Footer.tsx
 import Link from 'next/link'
 
 const Footer = () => {
   return (
     <footer className="bg-background text-foreground border-t">
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-2">HiveHaven</h3>
+            <h3 className="text-lg font-semibold mb-2"><span className='text-primary'>hive</span>Haven</h3>
             <p className="text-secondary-foreground/80">Making student accommodation easy.</p>
           </div>
           <div>
@@ -27,8 +26,8 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Contact</h3>
-            <p className="text-secondary-foreground/80">support@hivehaven.com</p>
-            <p className="text-secondary-foreground/80">1-800-HIVE-HAVEN</p>
+            <p className="text-secondary-foreground/80">support.placeholder@hive-haven.vercel.app</p>
+            <p className="text-secondary-foreground/80">1-800-PLACE-HOLDER</p>
           </div>
         </div>
         <div className="mt-8 text-center text-secondary-foreground/60">

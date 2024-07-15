@@ -62,31 +62,30 @@ export default function PropertiesList() {
             {properties.map((property) => {
               const primaryImage = property.property_images?.find(img => img.is_primary);
               return (
-                <div key={property.id} className="bg-card text-card-foreground rounded-lg overflow-hidden shadow-md">
-                  {primaryImage ? (
-                    <CldImage
-                      width="400"
-                      height="300"
-                      src={primaryImage.cloudinary_public_id}
-                      alt={property.name}
-                      crop="fill"
-                      gravity="auto"
-                      loading="lazy"
-                      className="w-full h-48 object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                      <span className="text-gray-500">No image available</span>
+                <div key={property.id} className="bg-card text-card-foreground rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                  <Link href={`/properties/${property.id}`}>
+                    {primaryImage ? (
+                      <CldImage
+                        width="400"
+                        height="300"
+                        src={primaryImage.cloudinary_public_id}
+                        alt={property.name}
+                        crop="fill"
+                        gravity="auto"
+                        loading="lazy"
+                        className="w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+                        <span className="text-gray-500">No image available</span>
+                      </div>
+                    )}
+                    <div className="p-4">
+                      <h2 className="text-xl font-semibold mb-2">{property.name}</h2>
+                      <p className="text-muted-foreground mb-2">{property.city}, {property.state}</p>
+                      <p className="text-lg font-bold mb-4">${property.price_per_month}/month</p>
                     </div>
-                  )}
-                  <div className="p-4">
-                    <h2 className="text-xl font-semibold mb-2">{property.name}</h2>
-                    <p className="text-muted-foreground mb-2">{property.city}, {property.state}</p>
-                    <p className="text-lg font-bold mb-4">${property.price_per_month}/month</p>
-                    <Link href={`/properties/${property.id}`} className="text-primary hover:underline">
-                      View Details
-                    </Link>
-                  </div>
+                  </Link>
                 </div>
               );
             })}
